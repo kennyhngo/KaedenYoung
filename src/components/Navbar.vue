@@ -155,9 +155,9 @@ const isOpen = ref<boolean>(false);
     <NavigationMenu class="hidden lg:block">
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger class="bg-card text-base">
+          <!-- <NavigationMenuTrigger class="bg-card text-base">
             Features
-          </NavigationMenuTrigger>
+          </NavigationMenuTrigger> -->
           <NavigationMenuContent>
             <div class="grid w-[600px] grid-cols-2 gap-5 p-4">
               <img
