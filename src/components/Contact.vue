@@ -16,12 +16,12 @@ import { Textarea } from "./ui/textarea";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 import { AlertCircle, Building2, Phone, Mail, Clock } from "lucide-vue-next";
+import { toast } from "vue-sonner";
 
 interface ContactFormeProps {
   firstName: string;
   lastName: string;
   email: string;
-  subject: string;
   message: string;
 }
 
@@ -29,19 +29,55 @@ const contactForm = reactive<ContactFormeProps>({
   firstName: "",
   lastName: "",
   email: "",
-  subject: "Web Development",
   message: "",
 });
 
 const invalidInputForm = ref<boolean>(false);
 
-const handleSubmit = () => {
-  const { firstName, lastName, email, subject, message } = contactForm;
-  console.log(contactForm);
+const handleSubmit = async () => {
+  const { firstName, lastName, email, message } = contactForm;
+  if (!firstName || !lastName || !email || !message) {
+    invalidInputForm.value = true;
+    toast.error("Please fill in all fields correctly.");
+    return;
+  }
+  invalidInputForm.value = false;
 
-  const mailToLink = `mailto:leomirandadev@gmail.com?subject=${subject}&body=Hello I am ${firstName} ${lastName}, my Email is ${email}. %0D%0A${message}`;
-
-  window.location.href = mailToLink;
+  fetch("https://formsubmit.co/ajax/fcf6a021d59596218fa38bc27dfcea3c", {
+      method: "POST",
+      headers: { 
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+       },
+      body: JSON.stringify({
+        name: `${firstName} ${lastName}`,
+        email,
+        message,
+        _subject: "New Pickleball Inquiry",
+        _template: "box",
+        _cc: "kennyngodev@gmail.com",
+        _captcha: true,
+      }),
+    })
+      .then((res) => res.json().then((data) => ({ status: res.status, data})))
+      .then(({ status, data}) => {
+        if (status !== 200) {
+          console.error("FormSubmit error", data);
+          toast.error("Failed to send message. Please try again.")
+          return;
+        }
+        toast.success("Message sent! We'll get back to you soon.");
+        Object.assign(contactForm, {
+          firstName: "",
+          lastName: "",
+          email: "",
+          message: "",
+        });
+      })
+      .catch((err) => {
+        console.error("Network or server error: ", err);
+        toast.error("Something went wrong. Please try again later.");
+      });
 };
 </script>
 
@@ -50,19 +86,19 @@ const handleSubmit = () => {
     id="contact"
     class="container py-24 sm:py-32"
   >
-    <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- <section class="grid grid-cols-1 md:grid-cols-2 gap-8"> -->
+    <section class="grid grid-cols-1 md:grid-cols-1 gap-8">
       <div>
         <div class="mb-4">
           <h2 class="text-lg text-primary mb-2 tracking-wider">Contact</h2>
-
-          <h2 class="text-3xl md:text-4xl font-bold">Connect With Us</h2>
+          <h2 class="text-3xl md:text-4xl font-bold">Get in touch</h2>
         </div>
-        <p class="mb-8 text-muted-foreground lg:w-5/6">
+        <!-- <p class="mb-8 text-muted-foreground lg:w-5/6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
           ipsam sint enim exercitationem ex autem corrupti quas tenetur
-        </p>
+        </p> -->
 
-        <div class="flex flex-col gap-4">
+        <!-- <div class="flex flex-col gap-4">
           <div>
             <div class="flex gap-2 mb-1">
               <Building2 />
@@ -101,7 +137,7 @@ const handleSubmit = () => {
               <div>8AM - 4PM</div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <!-- form -->
@@ -118,7 +154,7 @@ const handleSubmit = () => {
                 <Input
                   id="first-name"
                   type="text"
-                  placeholder="Leopoldo"
+                  placeholder=""
                   v-model="contactForm.firstName"
                 />
               </div>
@@ -128,7 +164,7 @@ const handleSubmit = () => {
                 <Input
                   id="last-name"
                   type="text"
-                  placeholder="Miranda"
+                  placeholder=""
                   v-model="contactForm.lastName"
                 />
               </div>
@@ -139,12 +175,12 @@ const handleSubmit = () => {
               <Input
                 id="email"
                 type="email"
-                placeholder="leomirandadev@gmail.com"
+                placeholder=""
                 v-model="contactForm.email"
               />
             </div>
 
-            <div class="flex flex-col gap-1.5">
+            <!-- <div class="flex flex-col gap-1.5">
               <Label for="subject">Subject</Label>
 
               <Select v-model="contactForm.subject">
@@ -167,13 +203,13 @@ const handleSubmit = () => {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-            </div>
+            </div> -->
 
             <div class="flex flex-col gap-1.5">
               <Label for="message">Message</Label>
               <Textarea
                 id="message"
-                placeholder="Your message..."
+                placeholder="Message"
                 rows="5"
                 v-model="contactForm.message"
               />
