@@ -13,8 +13,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  // CarouselNext,
+  // CarouselPrevious,
 } from "@/components/ui/carousel";
 
 import { Star } from "lucide-vue-next";
@@ -22,61 +22,26 @@ import { Star } from "lucide-vue-next";
 interface ReviewProps {
   image: string;
   name: string;
-  userName: string;
+  userName?: string;
   comment: string;
-  rating: number;
 }
 
 const reviewList: ReviewProps[] = [
   {
-    image: "https://github.com/shadcn.png",
-    name: "John Doe",
-    userName: "Product Manager",
-    comment:
-      "Wow Vue + Shadcn-Vue is awesome!. This template lets me change colors, fonts and images to match my brand identity. ",
-    rating: 5.0,
+    image: "chloe.jpg",
+    name: "Jibby",
+    comment: "One of the 2.5 players of all time.",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "Sophia Collins",
-    userName: "Cybersecurity Analyst",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. ",
-    rating: 4.8,
-  },
-
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Adam Johnson",
-    userName: "Chief Technology Officer",
-    comment:
-      "Lorem ipsum dolor sit amet,exercitation. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-    rating: 4.9,
+    image: "https://www.ppatour.com/wp-content/uploads/2025/03/Ben-Johns.png",
+    name: "Ben Johns",
+    comment: "Training with Kaeden has completely changed my approach to pickleball. His attention to detail and real-time feedback during group play has helped me improve my strategy and shot selection. Plus, his positive energy makes every session fun and productive.",
   },
   {
-    image: "https://github.com/shadcn.png",
-    name: "Ethan Parker",
-    userName: "Data Scientist",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    rating: 5.0,
-  },
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Ava Mitchell",
-    userName: "IT Project Manager",
-    comment:
-      "Lorem ipsum dolor sit amet, tempor incididunt  aliqua. Ut enim ad minim veniam, quis nostrud incididunt consectetur adipiscing elit.",
-    rating: 5.0,
-  },
-  {
-    image: "https://github.com/shadcn.png",
-    name: "Isabella Reed",
-    userName: "DevOps Engineer",
-    comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    rating: 4.9,
-  },
+    image: "https://imageio.forbes.com/specials-images/imageserve/6372abd4275c87dec8a8fb83/0x0.jpg?format=jpg&height=1200&width=400&fit=bounds",
+    name: "Anna Leigh Waters",
+    comment: "I started working with Kaeden after seeing him compete at a local tournament. His ability to spot small adjustments in my technique made a huge difference in my game. He's approachable, knowledgeable, and genuinely invested in helping his students succeed.",
+  }
 ];
 </script>
 
@@ -91,14 +56,12 @@ const reviewList: ReviewProps[] = [
       </h2>
 
       <h2 class="text-3xl md:text-4xl text-center font-bold mb-4">
-        Hear What Our 1000+ Clients Say
+        Hear What Our Clients Say
       </h2>
     </div>
 
     <Carousel
-      :opts="{
-        align: 'start',
-      }"
+      :opts="{ align: 'start', active: false }"
       class="relative w-[80%] sm:w-[90%] lg:max-w-screen-xl mx-auto"
     >
       <CarouselContent>
@@ -124,7 +87,7 @@ const reviewList: ReviewProps[] = [
               <div class="flex flex-row items-center gap-4">
                 <Avatar>
                   <AvatarImage
-                    src="https://www.radix-vue.com/logo.svg"
+                    :src="review.image"
                     alt="@radix-vue"
                   />
                   <AvatarFallback>SV</AvatarFallback>
@@ -139,8 +102,8 @@ const reviewList: ReviewProps[] = [
           </Card>
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <!-- <CarouselPrevious />
+      <CarouselNext /> -->
     </Carousel>
   </section>
 </template>
