@@ -200,7 +200,7 @@ const isOpen = ref<boolean>(false);
     <div class="hidden lg:flex">
       <ToggleTheme />
 
-      <Button
+      <!-- <Button
         as-child
         size="sm"
         variant="ghost"
@@ -211,9 +211,9 @@ const isOpen = ref<boolean>(false);
           href="https://github.com/leoMirandaa/shadcn-vue-landing-page.git"
           target="_blank"
         >
-          <!-- <GithubIcon class="size-5" /> -->
+          <GithubIcon class="size-5" />
         </a>
-      </Button>
+      </Button> -->
     </div>
   </header>
 </template>
