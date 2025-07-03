@@ -45,16 +45,12 @@ const routeList: RouteProps[] = [
     label: "Testimonials",
   },
   {
-    href: "#team",
-    label: "Team",
+    href: "#pricing",
+    label: "Pricing"
   },
   {
     href: "#contact",
     label: "Contact",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
   },
 ];
 
@@ -215,7 +211,7 @@ const isOpen = ref<boolean>(false);
           href="https://github.com/leoMirandaa/shadcn-vue-landing-page.git"
           target="_blank"
         >
-          <GithubIcon class="size-5" />
+          <!-- <GithubIcon class="size-5" /> -->
         </a>
       </Button>
     </div>
