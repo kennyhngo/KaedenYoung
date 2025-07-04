@@ -1,11 +1,11 @@
 {
-  "name": "shadcn-vue-landing-page",
-  "description": "Shadcn/Vue landing page template using Vue, Shadcn/Vue + TypeScript + Tailwind CSS.",
+  "name": "kaeden-young",
+  "description": "Kaeden Young service website using Vue, Shadcn/Vue + TypeScript + Tailwind CSS.",
   "version": "0.1.1",
   "author": {
-    "name": "Leopoldo Miranda",
-    "email": "leomirandadev@gmail.com",
-    "url": "https://github.com/leomirandaa"
+    "name": "Kenny Ngo",
+    "email": "kennyngodev@gmail.com",
+    "url": "https://github.com/kennyhngo"
   },
   "keywords": [
     "vue",
