@@ -41,12 +41,16 @@ interface FeatureProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#testimonials",
-    label: "Testimonials",
+    href: "#",
+    label: "Home"
   },
   {
     href: "#pricing",
     label: "Pricing"
+  },
+  {
+    href: "#testimonials",
+    label: "Testimonials",
   },
   {
     href: "#contact",
@@ -84,13 +88,13 @@ const isOpen = ref<boolean>(false);
   >
     <a
       href="/"
-      class="font-bold text-lg flex items-center"
+      class="font-bold text-lg flex items-center ml-4"
     >
-      <ChevronsDown
+      <!-- <ChevronsDown
         class="bg-gradient-to-tr from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white"
-      />
-      ShadcnVue</a
-    >
+      /> -->
+      Kaeden Young
+    </a>
     <!-- Mobile -->
     <div class="flex items-center lg:hidden">
       <Sheet v-model:open="isOpen">
