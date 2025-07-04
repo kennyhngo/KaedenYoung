@@ -10,8 +10,7 @@ import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
+  NavigationMenuList
 } from "@/components/ui/navigation-menu";
 import {
   Sheet,
@@ -25,7 +24,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-import GithubIcon from "@/icons/GithubIcon.vue";
 import { ChevronsDown, Menu } from "lucide-vue-next";
 import ToggleTheme from "./ToggleTheme.vue";
 

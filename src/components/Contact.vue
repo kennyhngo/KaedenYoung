@@ -1,21 +1,13 @@
 <script setup lang="ts">
-import { ref, reactive } from "vue";
-import { Button } from "./ui/button";
-import { Card, CardHeader, CardContent, CardFooter } from "./ui/card";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
-import { Textarea } from "./ui/textarea";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { reactive, ref } from "vue";
+import { Button } from "./ui/button";
+import { Card, CardContent, CardFooter, CardHeader } from "./ui/card";
+import { Input } from "./ui/input";
+import { Label } from "./ui/label";
+import { Textarea } from "./ui/textarea";
 
-import { AlertCircle, Building2, Phone, Mail, Clock } from "lucide-vue-next";
+import { AlertCircle } from "lucide-vue-next";
 import { toast } from "vue-sonner";
 
 interface ContactFormeProps {
