@@ -35,7 +35,8 @@ const handleSubmit = async () => {
   }
   invalidInputForm.value = false;
 
-  fetch("https://formsubmit.co/ajax/fcf6a021d59596218fa38bc27dfcea3c", {
+  // fetch("https://formsubmit.co/ajax/fcf6a021d59596218fa38bc27dfcea3c", {
+  fetch("https://formsubmit.co/ajax/kennyngodev@gmail.com", {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",
